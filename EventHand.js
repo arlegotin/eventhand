@@ -17,10 +17,8 @@
     };
     
     EventHand.prototype.one = function( name, callback ) {
-        var that = this;
-    
         this.on( name, function( data, current_name ) {
-            callback( data, current_name );
+            callback( data, current_name, that );
             that.off( name );
         } );
     };
@@ -47,7 +45,7 @@
             item_name = item.name;
             
             if ( item_name === name || item_name === this._every_alias || name === this._every_alias ) {
-                item.callback( data, item_name );
+                item.callback( data, item_name, this );
             }
         }
     };
