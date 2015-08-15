@@ -17,7 +17,7 @@
     };
     
     EventHand.prototype.one = function( name, callback ) {
-        this.on( name, function( data, current_name ) {
+        this.on( name, function( data, current_name, that ) {
             callback( data, current_name, that );
             that.off( name );
         } );
